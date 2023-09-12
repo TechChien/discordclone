@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { ThemeProvider } from "@/components/provider/theme-provider";
+import { cn } from "@/lib/utils";
+
 const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,8 +20,17 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={font.className}>{children}</body>
+      <html lang="en" suppressHydrationWarning={true}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          storageKey="discord-theme"
+        >
+          <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
+            {children}
+          </body>
+        </ThemeProvider>
       </html>
     </ClerkProvider>
   );
