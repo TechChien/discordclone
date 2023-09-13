@@ -52,3 +52,5 @@ const InviteCodePage = async ({ params }: InviteCodePageProps) => {
 
   return null;
 };
+
+export default InviteCodePage;

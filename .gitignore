@@ -38,3 +38,5 @@ next-env.d.ts
 # test folder
 /app/test
 /app/test/*
+
+testaccount.txt
